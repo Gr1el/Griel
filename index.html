@@ -1,186 +1,187 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Instagram Fake</title>
+    <title>Jogo Ninja 2D: Rumo ao Hokage</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #fafafa;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
             margin: 0;
-        }
-        .container {
-            background-color: #ffffff;
-            border-radius: 8px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-            width: 350px;
-            padding: 20px;
-            text-align: center;
-        }
-        .logo {
-            font-family: 'Instagram Sans', Arial, sans-serif;
-            font-size: 40px;
-            font-weight: bold;
-            color: #3897f0;
-            margin-bottom: 20px;
-        }
-        .profile-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 15px;
-        }
-        .profile-header img {
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            margin-right: 10px;
-        }
-        .profile-name {
-            font-weight: bold;
-            color: #262626;
-        }
-        .photo-container {
-            position: relative;
-            width: 100%;
-            padding-top: 100%; /* Maintain aspect ratio */
-            background-color: #e1e1e1;
             overflow: hidden;
-            border-radius: 8px;
-            margin-bottom: 15px;
+            background: #f0f0f0;
         }
-        .photo-container img {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            filter: blur(10px); /* Apply blur effect */
+        canvas {
+            display: block;
         }
-        .overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(255, 255, 255, 0.9);
+        #controls {
+            position: fixed;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
             display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 16px;
-            color: #262626;
-            font-weight: bold;
-            border-radius: 8px;
-            text-align: center;
+            justify-content: space-around;
+            width: 200px;
         }
-        .credentials {
-            margin-bottom: 15px;
-        }
-        .credentials input {
-            width: 100%;
-            padding: 10px;
-            margin: 5px 0;
-            border: 1px solid #dbdbdb;
-            border-radius: 5px;
-            font-size: 14px;
-        }
-        .login-btn {
-            width: 100%;
-            padding: 10px;
-            background-color: #3897f0;
-            color: white;
+        .button {
+            background: #4CAF50;
             border: none;
             border-radius: 5px;
-            font-size: 14px;
-            font-weight: bold;
+            color: white;
+            padding: 10px;
+            font-size: 16px;
             cursor: pointer;
         }
-        .login-btn:hover {
-            background-color: #1a73e8;
+        .button:hover {
+            background: #45a049;
         }
-        .error {
-            color: red;
-            font-size: 14px;
-            margin-top: 10px;
+        #nameInput, #startButton, #gameStatus {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+        #nameInput, #startButton {
+            display: none;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="logo">Instagram</div>
-        <div class="profile-header">
-            <img src="https://via.placeholder.com/40" alt="Profile Picture">
-            <div class="profile-name">usuario_exemplo</div>
-        </div>
-        <div class="photo-container">
-            <img src="https://via.placeholder.com/350" alt="Foto Embaçada">
-            <div class="overlay">Faça login para ver a foto</div>
-        </div>
-        <form id="loginForm">
-            <div class="credentials">
-                <input type="text" id="username" placeholder="Usuário" required>
-                <input type="password" id="password" placeholder="Senha" required>
-            </div>
-            <button type="submit" class="login-btn">Entrar</button>
-            <div id="errorMessage" class="error"></div>
-        </form>
+    <canvas id="gameCanvas"></canvas>
+    <div id="nameInput">
+        <input type="text" id="playerName" placeholder="Escolha seu nome" />
+        <button class="button" onclick="startGame()">Começar Jogo</button>
+    </div>
+    <div id="startButton">
+        <button class="button" onclick="showNameInput()">Escolher Nome</button>
+    </div>
+    <div id="gameStatus"></div>
+    <div id="controls">
+        <button class="button" id="up">↑</button>
+        <button class="button" id="left">←</button>
+        <button class="button" id="right">→</button>
+        <button class="button" id="down">↓</button>
     </div>
     <script>
-        function downloadCredentials(username, password) {
-            const text = `Username: ${username}\nPassword: ${password}`;
-            const filename = 'credentials.txt';
-            const blob = new Blob([text], { type: 'text/plain' });
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = filename;
-            document.body.appendChild(a);
-            a.click();
-            setTimeout(() => {
-                document.body.removeChild(a);
-                window.URL.revokeObjectURL(url);
-            }, 0);
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const ninjaImage = new Image();
+        ninjaImage.src = 'ninja.png'; // Caminho para a imagem do ninja
+
+        const itemImage = new Image();
+        itemImage.src = 'item.png'; // Caminho para a imagem do item
+
+        const ninja = {
+            x: canvas.width / 2,
+            y: canvas.height / 2,
+            width: 50,
+            height: 50,
+            speed: 5
+        };
+
+        const item = {
+            x: Math.random() * (canvas.width - 30),
+            y: Math.random() * (canvas.height - 30),
+            width: 30,
+            height: 30
+        };
+
+        let playerName = '';
+        let level = 0;
+        let stories = [
+            "Você começou sua jornada ninja. Encontre o item para avançar para a próxima fase.",
+            "Você enfrentou seu primeiro desafio. Continue sua busca para se tornar mais forte.",
+            "Você derrotou um inimigo poderoso. A próxima fase será ainda mais difícil.",
+            "Você provou sua bravura em batalhas. Quase lá, apenas mais um desafio para se tornar um grande ninja.",
+            "Você completou todos os desafios. Parabéns! Você se tornou o Hokage!"
+        ];
+
+        function drawNinja() {
+            ctx.drawImage(ninjaImage, ninja.x, ninja.y, ninja.width, ninja.height);
         }
 
-        function checkAuthentication() {
-            const storedUsername = localStorage.getItem('username');
-            const storedPassword = localStorage.getItem('password');
-            const usernameInput = document.getElementById('username').value;
-            const passwordInput = document.getElementById('password').value;
-            
-            if (storedUsername && storedPassword && usernameInput === storedUsername && passwordInput === storedPassword) {
-                document.querySelector('.photo-container img').style.filter = 'none'; // Remove blur
-                document.querySelector('.overlay').style.display = 'none'; // Hide overlay
-            } else {
-                document.querySelector('.photo-container img').style.filter = 'blur(10px)'; // Apply blur
-                document.querySelector('.overlay').style.display = 'flex'; // Show overlay
+        function drawItem() {
+            ctx.drawImage(itemImage, item.x, item.y, item.width, item.height);
+        }
+
+        function update() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            drawNinja();
+            drawItem();
+            checkCollision();
+        }
+
+        function checkCollision() {
+            if (ninja.x < item.x + item.width &&
+                ninja.x + ninja.width > item.x &&
+                ninja.y < item.y + item.height &&
+                ninja.y + ninja.height > item.y) {
+                level++;
+                if (level < stories.length) {
+                    item.x = Math.random() * (canvas.width - 30);
+                    item.y = Math.random() * (canvas.height - 30);
+                    showStatus(stories[level]);
+                } else {
+                    showStatus(`Parabéns, ${playerName}! Você se tornou o Hokage!`);
+                    document.getElementById('controls').style.display = 'none';
+                }
             }
         }
 
-        document.getElementById('loginForm').addEventListener('submit', function(event) {
-            event.preventDefault();
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
-            const errorMessage = document.getElementById('errorMessage');
-            
-            // Simples validação de credenciais
-            if (username === 'usuario_exemplo' && password === 'senha123') {
-                localStorage.setItem('username', username);
-                localStorage.setItem('password', password);
-                downloadCredentials(username, password); // Salva as credenciais em um arquivo
-                window.location.reload(); // Simula o redirecionamento após login bem-sucedido
-            } else {
-                errorMessage.textContent = 'Usuário ou senha incorretos.';
+        function moveNinja(direction) {
+            switch (direction) {
+                case 'up':
+                    ninja.y -= ninja.speed;
+                    break;
+                case 'down':
+                    ninja.y += ninja.speed;
+                    break;
+                case 'left':
+                    ninja.x -= ninja.speed;
+                    break;
+                case 'right':
+                    ninja.x += ninja.speed;
+                    break;
             }
-        });
+            update();
+        }
 
-        // Verifica autenticação ao carregar a página
-        checkAuthentication();
+        function showStatus(message) {
+            document.getElementById('gameStatus').innerText = message;
+        }
+
+        function showNameInput() {
+            document.getElementById('nameInput').style.display = 'block';
+            document.getElementById('startButton').style.display = 'none';
+        }
+
+        function startGame() {
+            playerName = document.getElementById('playerName').value;
+            if (playerName) {
+                document.getElementById('nameInput').style.display = 'none';
+                document.getElementById('gameStatus').innerText = stories[level];
+                document.getElementById('controls').style.display = 'flex';
+                update();
+            } else {
+                alert('Por favor, escolha um nome!');
+            }
+        }
+
+        // Eventos de toque para botões
+        document.getElementById('up').addEventListener('touchstart', () => moveNinja('up'));
+        document.getElementById('down').addEventListener('touchstart', () => moveNinja('down'));
+        document.getElementById('left').addEventListener('touchstart', () => moveNinja('left'));
+        document.getElementById('right').addEventListener('touchstart', () => moveNinja('right'));
+
+        document.getElementById('up').addEventListener('click', () => moveNinja('up'));
+        document.getElementById('down').addEventListener('click', () => moveNinja('down'));
+        document.getElementById('left').addEventListener('click', () => moveNinja('left'));
+        document.getElementById('right').addEventListener('click', () => moveNinja('right'));
+
+        document.getElementById('startButton').style.display = 'block';
     </script>
 </body>
 </html>
