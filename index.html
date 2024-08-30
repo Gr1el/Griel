@@ -4,32 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Escala de Trabalho</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Raleway:wght@300;600&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: 'Roboto', sans-serif;
-            background: radial-gradient(circle, #e0f7fa, #80deea);
+            font-family: 'Raleway', sans-serif;
+            background: linear-gradient(135deg, #e3f2fd, #b3e5fc);
             margin: 0;
-            padding: 20px;
+            padding: 0;
             color: #333;
         }
         h1 {
             text-align: center;
-            color: #fff;
-            background: linear-gradient(135deg, #00bcd4, #0097a7);
+            color: #ffffff;
+            background: linear-gradient(135deg, #004d40, #00796b);
             padding: 20px;
             border-radius: 12px;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
-            margin-bottom: 20px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+            margin-bottom: 30px;
             font-size: 2.5em;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
-            animation: fadeIn 1s ease-in;
+            font-family: 'Roboto', sans-serif;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
+            animation: fadeIn 1.5s ease-in;
         }
         .table-container {
-            max-width: 1200px;
+            max-width: 100%;
             margin: 0 auto;
             overflow-x: auto;
-            animation: slideIn 1s ease-out;
+            padding: 0 15px;
         }
         table {
             width: 100%;
@@ -39,86 +40,96 @@
             background: #ffffff;
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
             border: 1px solid #ddd;
-            animation: fadeIn 1s ease-in;
+            animation: fadeIn 1.5s ease-in;
         }
         thead {
             background: linear-gradient(135deg, #004d40, #00796b);
-            color: #fff;
+            color: #ffffff;
             text-align: left;
+            font-family: 'Roboto', sans-serif;
         }
         th, td {
             padding: 16px;
             text-align: center;
             border-bottom: 1px solid #ddd;
             transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+            position: relative;
         }
         th {
             font-weight: 700;
             letter-spacing: 1px;
+            font-size: 1.2em;
         }
         tbody tr:nth-child(even) {
-            background-color: #f1f8f6;
+            background-color: #f9f9f9;
         }
         tbody tr:hover {
             background-color: #b2dfdb;
-            transform: scale(1.03);
-            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+            transform: scale(1.02);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
         }
         .status-presencial {
-            color: #4CAF50;
+            color: #388e3c;
             font-weight: 600;
-            background-color: #dfffd8;
-            border-radius: 8px;
-            padding: 6px 12px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            background-color: #dcedc8;
+            border-radius: 12px;
+            padding: 8px 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            display: inline-block;
+            font-size: 0.9em;
         }
         .status-home {
-            color: #FF9800;
+            color: #f57c00;
             font-weight: 600;
             background-color: #fff3e0;
-            border-radius: 8px;
-            padding: 6px 12px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            border-radius: 12px;
+            padding: 8px 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            display: inline-block;
+            font-size: 0.9em;
         }
         .status-folga {
-            color: #9E9E9E;
+            color: #9e9e9e;
             font-weight: 600;
-            background-color: #e0e0e0;
-            border-radius: 8px;
-            padding: 6px 12px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            background-color: #f5f5f5;
+            border-radius: 12px;
+            padding: 8px 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            display: inline-block;
+            font-size: 0.9em;
         }
         .status-recebe {
-            color: #3F51B5;
+            color: #3f51b5;
             font-weight: 600;
-            background-color: #e3f2fd;
-            border-radius: 8px;
-            padding: 6px 12px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            background-color: #e8eaf6;
+            border-radius: 12px;
+            padding: 8px 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            display: inline-block;
+            font-size: 0.9em;
         }
         @media (max-width: 768px) {
-            table, thead, tbody, th, td, tr {
-                display: block;
+            table {
+                border: 0;
             }
-            thead tr {
-                position: absolute;
-                top: -9999px;
-                left: -9999px;
+            thead {
+                display: none;
             }
             tr {
-                border: 1px solid #ddd;
+                display: block;
                 margin-bottom: 10px;
                 background-color: #ffffff;
                 border-radius: 8px;
                 overflow: hidden;
-                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
             }
             td {
-                border: none;
-                position: relative;
-                padding-left: 50%;
+                display: block;
                 text-align: left;
-                white-space: nowrap;
+                padding: 10px;
+                position: relative;
+                border-bottom: 1px solid #ddd;
+                font-size: 0.9em;
             }
             td:before {
                 content: attr(data-label);
@@ -126,15 +137,19 @@
                 left: 0;
                 width: 50%;
                 padding-left: 15px;
-                font-weight: 700;
+                font-weight: 600;
                 color: #333;
-                background-color: #f9f9f9;
+                background-color: #f5f5f5;
                 border-right: 1px solid #ddd;
                 border-bottom: 1px solid #ddd;
                 top: 0;
                 height: 100%;
-                line-height: 2.5;
+                line-height: 1.5;
                 z-index: 1;
+                font-size: 0.9em;
+            }
+            td:last-child {
+                border-bottom: 0;
             }
         }
         @keyframes fadeIn {
@@ -142,16 +157,6 @@
                 opacity: 0;
             }
             to {
-                opacity: 1;
-            }
-        }
-        @keyframes slideIn {
-            from {
-                transform: translateX(-100%);
-                opacity: 0;
-            }
-            to {
-                transform: translateX(0);
                 opacity: 1;
             }
         }
@@ -170,19 +175,19 @@
             </thead>
             <tbody>
                 <tr>
-                    <td>31-Aug</td>
-                    <td>Sábado</td>
-                    <td class="status-folga">Gabriel (Folga)</td>
+                    <td data-label="Dia">31-Aug</td>
+                    <td data-label="Semana">Sábado</td>
+                    <td data-label="Analistas" class="status-folga">Gabriel (Folga)</td>
                 </tr>
                 <tr>
-                    <td>1-Sep</td>
-                    <td>Domingo</td>
-                    <td class="status-folga">Vini (Folga)</td>
+                    <td data-label="Dia">1-Sep</td>
+                    <td data-label="Semana">Domingo</td>
+                    <td data-label="Analistas" class="status-folga">Vini (Folga)</td>
                 </tr>
                 <tr>
-                    <td>2-Sep</td>
-                    <td>Segunda-feira</td>
-                    <td>
+                    <td data-label="Dia">2-Sep</td>
+                    <td data-label="Semana">Segunda-feira</td>
+                    <td data-label="Analistas">
                         <span class="status-presencial">Gabriel Yohan (Presencial)</span>, 
                         <span class="status-home">Vinicius Emanuel (Home)</span>, 
                         <span class="status-presencial">Davi Silva Barros (Presencial)</span>, 
@@ -192,9 +197,9 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>3-Sep</td>
-                    <td>Terça-feira</td>
-                    <td>
+                    <td data-label="Dia">3-Sep</td>
+                    <td data-label="Semana">Terça-feira</td>
+                    <td data-label="Analistas">
                         <span class="status-presencial">Gabriel Yohan (Presencial)</span>, 
                         <span class="status-presencial">Vinicius Emanuel (Presencial)</span>, 
                         <span class="status-home">Davi Silva Barros (Home)</span>, 
@@ -204,9 +209,9 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>4-Sep</td>
-                    <td>Quarta-feira</td>
-                    <td>
+                    <td data-label="Dia">4-Sep</td>
+                    <td data-label="Semana">Quarta-feira</td>
+                    <td data-label="Analistas">
                         <span class="status-presencial">Gabriel Yohan (Presencial)</span>, 
                         <span class="status-home">Vinicius Emanuel (Home)</span>, 
                         <span class="status-presencial">Davi Silva Barros (Presencial)</span>, 
@@ -216,21 +221,21 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>5-Sep</td>
-                    <td>Quinta-feira</td>
-                    <td>
+                    <td data-label="Dia">5-Sep</td>
+                    <td data-label="Semana">Quinta-feira</td>
+                    <td data-label="Analistas">
                         <span class="status-presencial">Gabriel Yohan (Presencial)</span>, 
                         <span class="status-presencial">Vinicius Emanuel (Presencial)</span>, 
                         <span class="status-home">Davi Silva Barros (Home)</span>, 
                         <span class="status-home">Gabriel Costa Lopes (Home)</span>, 
-                        <span class="status-presencial">Daniel Claros Prada (Presencial)</span>, 
-                        <span class="status-home">Daniel Vilaça (Home)</span>
+                        <span class="status-home">Daniel Claros Prada (Home)</span>, 
+                        <span class="status-presencial">Daniel Vilaça (Presencial)</span>
                     </td>
                 </tr>
                 <tr>
-                    <td>6-Sep</td>
-                    <td>Sexta-feira</td>
-                    <td>
+                    <td data-label="Dia">6-Sep</td>
+                    <td data-label="Semana">Sexta-feira</td>
+                    <td data-label="Analistas">
                         <span class="status-presencial">Gabriel Yohan (Presencial)</span>, 
                         <span class="status-folga">Vinicius Emanuel (Folga)</span>, 
                         <span class="status-presencial">Davi Silva Barros (Presencial)</span>, 
@@ -240,19 +245,19 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>7-Sep</td>
-                    <td>Sábado</td>
-                    <td class="status-recebe">Prada (Recebe R$)</td>
+                    <td data-label="Dia">7-Sep</td>
+                    <td data-label="Semana">Sábado</td>
+                    <td data-label="Analistas" class="status-recebe">Prada (Recebe R$)</td>
                 </tr>
                 <tr>
-                    <td>8-Sep</td>
-                    <td>Domingo</td>
-                    <td class="status-recebe">Davi (Recebe R$)</td>
+                    <td data-label="Dia">8-Sep</td>
+                    <td data-label="Semana">Domingo</td>
+                    <td data-label="Analistas" class="status-recebe">Davi (Recebe R$)</td>
                 </tr>
                 <tr>
-                    <td>9-Sep</td>
-                    <td>Segunda-feira</td>
-                    <td>
+                    <td data-label="Dia">9-Sep</td>
+                    <td data-label="Semana">Segunda-feira</td>
+                    <td data-label="Analistas">
                         <span class="status-presencial">Gabriel Yohan (Presencial)</span>, 
                         <span class="status-presencial">Vinicius Emanuel (Presencial)</span>, 
                         <span class="status-home">Davi Silva Barros (Home)</span>, 
@@ -262,9 +267,9 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>10-Sep</td>
-                    <td>Terça-feira</td>
-                    <td>
+                    <td data-label="Dia">10-Sep</td>
+                    <td data-label="Semana">Terça-feira</td>
+                    <td data-label="Analistas">
                         <span class="status-presencial">Gabriel Yohan (Presencial)</span>, 
                         <span class="status-home">Vinicius Emanuel (Home)</span>, 
                         <span class="status-presencial">Davi Silva Barros (Presencial)</span>, 
@@ -274,9 +279,9 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>11-Sep</td>
-                    <td>Quarta-feira</td>
-                    <td>
+                    <td data-label="Dia">11-Sep</td>
+                    <td data-label="Semana">Quarta-feira</td>
+                    <td data-label="Analistas">
                         <span class="status-presencial">Gabriel Yohan (Presencial)</span>, 
                         <span class="status-presencial">Vinicius Emanuel (Presencial)</span>, 
                         <span class="status-home">Davi Silva Barros (Home)</span>, 
@@ -286,9 +291,9 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>12-Sep</td>
-                    <td>Quinta-feira</td>
-                    <td>
+                    <td data-label="Dia">12-Sep</td>
+                    <td data-label="Semana">Quinta-feira</td>
+                    <td data-label="Analistas">
                         <span class="status-presencial">Gabriel Yohan (Presencial)</span>, 
                         <span class="status-home">Vinicius Emanuel (Home)</span>, 
                         <span class="status-presencial">Davi Silva Barros (Presencial)</span>, 
@@ -298,9 +303,9 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>13-Sep</td>
-                    <td>Sexta-feira</td>
-                    <td>
+                    <td data-label="Dia">13-Sep</td>
+                    <td data-label="Semana">Sexta-feira</td>
+                    <td data-label="Analistas">
                         <span class="status-presencial">Gabriel Yohan (Presencial)</span>, 
                         <span class="status-presencial">Vinicius Emanuel (Presencial)</span>, 
                         <span class="status-home">Davi Silva Barros (Home)</span>, 
@@ -310,19 +315,19 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>14-Sep</td>
-                    <td>Sábado</td>
-                    <td class="status-folga">Prada (Folga)</td>
+                    <td data-label="Dia">14-Sep</td>
+                    <td data-label="Semana">Sábado</td>
+                    <td data-label="Analistas" class="status-folga">Prada (Folga)</td>
                 </tr>
                 <tr>
-                    <td>15-Sep</td>
-                    <td>Domingo</td>
-                    <td class="status-recebe">Davi (Recebe R$)</td>
+                    <td data-label="Dia">15-Sep</td>
+                    <td data-label="Semana">Domingo</td>
+                    <td data-label="Analistas" class="status-recebe">Davi (Recebe R$)</td>
                 </tr>
                 <tr>
-                    <td>16-Sep</td>
-                    <td>Segunda-feira</td>
-                    <td>
+                    <td data-label="Dia">16-Sep</td>
+                    <td data-label="Semana">Segunda-feira</td>
+                    <td data-label="Analistas">
                         <span class="status-presencial">Gabriel Yohan (Presencial)</span>, 
                         <span class="status-presencial">Vinicius Emanuel (Presencial)</span>, 
                         <span class="status-home">Davi Silva Barros (Home)</span>, 
@@ -331,9 +336,9 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>17-Sep</td>
-                    <td>Terça-feira</td>
-                    <td>
+                    <td data-label="Dia">17-Sep</td>
+                    <td data-label="Semana">Terça-feira</td>
+                    <td data-label="Analistas">
                         <span class="status-presencial">Gabriel Yohan (Presencial)</span>, 
                         <span class="status-home">Vinicius Emanuel (Home)</span>, 
                         <span class="status-presencial">Davi Silva Barros (Presencial)</span>, 
@@ -342,9 +347,9 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>18-Sep</td>
-                    <td>Quarta-feira</td>
-                    <td>
+                    <td data-label="Dia">18-Sep</td>
+                    <td data-label="Semana">Quarta-feira</td>
+                    <td data-label="Analistas">
                         <span class="status-presencial">Gabriel Yohan (Presencial)</span>, 
                         <span class="status-presencial">Vinicius Emanuel (Presencial)</span>, 
                         <span class="status-home">Davi Silva Barros (Home)</span>, 
@@ -353,9 +358,9 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>19-Sep</td>
-                    <td>Quinta-feira</td>
-                    <td>
+                    <td data-label="Dia">19-Sep</td>
+                    <td data-label="Semana">Quinta-feira</td>
+                    <td data-label="Analistas">
                         <span class="status-presencial">Gabriel Yohan (Presencial)</span>, 
                         <span class="status-home">Vinicius Emanuel (Home)</span>, 
                         <span class="status-presencial">Davi Silva Barros (Presencial)</span>, 
@@ -364,25 +369,15 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>20-Sep</td>
-                    <td>Sexta-feira</td>
-                    <td>
+                    <td data-label="Dia">20-Sep</td>
+                    <td data-label="Semana">Sexta-feira</td>
+                    <td data-label="Analistas">
                         <span class="status-presencial">Gabriel Yohan (Presencial)</span>, 
                         <span class="status-presencial">Vinicius Emanuel (Presencial)</span>, 
                         <span class="status-home">Davi Silva Barros (Home)</span>, 
                         <span class="status-presencial">Gabriel Costa Lopes (Presencial)</span>, 
                         <span class="status-home">Daniel Claros Prada (Home)</span>
                     </td>
-                </tr>
-                <tr>
-                    <td>21-Sep</td>
-                    <td>Sábado</td>
-                    <td class="status-presencial">Vini</td>
-                </tr>
-                <tr>
-                    <td>22-Sep</td>
-                    <td>Domingo</td>
-                    <td class="status-presencial">Gabriel</td>
                 </tr>
             </tbody>
         </table>
