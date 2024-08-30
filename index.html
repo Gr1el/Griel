@@ -53,7 +53,6 @@
             text-align: center;
             border-bottom: 1px solid #ddd;
             transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
-            position: relative;
         }
         th {
             font-weight: 700;
@@ -152,6 +151,17 @@
                 border-bottom: 0;
             }
         }
+        @media (max-width: 480px) {
+            table {
+                font-size: 0.8em;
+            }
+            th, td {
+                padding: 12px;
+            }
+            .status-presencial, .status-home, .status-folga, .status-recebe {
+                font-size: 0.8em;
+            }
+        }
         @keyframes fadeIn {
             from {
                 opacity: 0;
@@ -214,9 +224,9 @@
                     <td data-label="Analistas">
                         <span class="status-presencial">Gabriel Yohan (Presencial)</span>, 
                         <span class="status-home">Vinicius Emanuel (Home)</span>, 
-                        <span class="status-presencial">Davi Silva Barros (Presencial)</span>, 
+                        <span class="status-folga">Davi Silva Barros (Folga)</span>, 
                         <span class="status-presencial">Gabriel Costa Lopes (Presencial)</span>, 
-                        <span class="status-home">Daniel Claros Prada (Home)</span>, 
+                        <span class="status-presencial">Daniel Claros Prada (Presencial)</span>, 
                         <span class="status-home">Daniel Vilaça (Home)</span>
                     </td>
                 </tr>
@@ -224,10 +234,10 @@
                     <td data-label="Dia">5-Sep</td>
                     <td data-label="Semana">Quinta-feira</td>
                     <td data-label="Analistas">
-                        <span class="status-presencial">Gabriel Yohan (Presencial)</span>, 
+                        <span class="status-home">Gabriel Yohan (Home)</span>, 
                         <span class="status-presencial">Vinicius Emanuel (Presencial)</span>, 
                         <span class="status-home">Davi Silva Barros (Home)</span>, 
-                        <span class="status-home">Gabriel Costa Lopes (Home)</span>, 
+                        <span class="status-folga">Gabriel Costa Lopes (Folga)</span>, 
                         <span class="status-home">Daniel Claros Prada (Home)</span>, 
                         <span class="status-presencial">Daniel Vilaça (Presencial)</span>
                     </td>
@@ -237,33 +247,47 @@
                     <td data-label="Semana">Sexta-feira</td>
                     <td data-label="Analistas">
                         <span class="status-presencial">Gabriel Yohan (Presencial)</span>, 
-                        <span class="status-folga">Vinicius Emanuel (Folga)</span>, 
+                        <span class="status-home">Vinicius Emanuel (Home)</span>, 
                         <span class="status-presencial">Davi Silva Barros (Presencial)</span>, 
                         <span class="status-home">Gabriel Costa Lopes (Home)</span>, 
-                        <span class="status-home">Daniel Claros Prada (Home)</span>, 
-                        <span class="status-presencial">Daniel Vilaça (Presencial)</span>
+                        <span class="status-presencial">Daniel Claros Prada (Presencial)</span>, 
+                        <span class="status-home">Daniel Vilaça (Home)</span>
                     </td>
                 </tr>
                 <tr>
                     <td data-label="Dia">7-Sep</td>
                     <td data-label="Semana">Sábado</td>
-                    <td data-label="Analistas" class="status-recebe">Prada (Recebe R$)</td>
+                    <td data-label="Analistas">
+                        <span class="status-presencial">Gabriel Yohan (Presencial)</span>, 
+                        <span class="status-presencial">Vinicius Emanuel (Presencial)</span>, 
+                        <span class="status-home">Davi Silva Barros (Home)</span>, 
+                        <span class="status-folga">Gabriel Costa Lopes (Folga)</span>, 
+                        <span class="status-home">Daniel Claros Prada (Home)</span>, 
+                        <span class="status-presencial">Daniel Vilaça (Presencial)</span>
+                    </td>
                 </tr>
                 <tr>
                     <td data-label="Dia">8-Sep</td>
                     <td data-label="Semana">Domingo</td>
-                    <td data-label="Analistas" class="status-recebe">Davi (Recebe R$)</td>
+                    <td data-label="Analistas">
+                        <span class="status-home">Gabriel Yohan (Home)</span>, 
+                        <span class="status-presencial">Vinicius Emanuel (Presencial)</span>, 
+                        <span class="status-home">Davi Silva Barros (Home)</span>, 
+                        <span class="status-folga">Gabriel Costa Lopes (Folga)</span>, 
+                        <span class="status-presencial">Daniel Claros Prada (Presencial)</span>, 
+                        <span class="status-home">Daniel Vilaça (Home)</span>
+                    </td>
                 </tr>
                 <tr>
                     <td data-label="Dia">9-Sep</td>
                     <td data-label="Semana">Segunda-feira</td>
                     <td data-label="Analistas">
-                        <span class="status-presencial">Gabriel Yohan (Presencial)</span>, 
+                        <span class="status-home">Gabriel Yohan (Home)</span>, 
                         <span class="status-presencial">Vinicius Emanuel (Presencial)</span>, 
-                        <span class="status-home">Davi Silva Barros (Home)</span>, 
-                        <span class="status-home">Gabriel Costa Lopes (Home)</span>, 
-                        <span class="status-home">Daniel Claros Prada (Home)</span>, 
-                        <span class="status-presencial">Daniel Vilaça (Presencial)</span>
+                        <span class="status-folga">Davi Silva Barros (Folga)</span>, 
+                        <span class="status-presencial">Gabriel Costa Lopes (Presencial)</span>, 
+                        <span class="status-presencial">Daniel Claros Prada (Presencial)</span>, 
+                        <span class="status-home">Daniel Vilaça (Home)</span>
                     </td>
                 </tr>
                 <tr>
@@ -273,9 +297,9 @@
                         <span class="status-presencial">Gabriel Yohan (Presencial)</span>, 
                         <span class="status-home">Vinicius Emanuel (Home)</span>, 
                         <span class="status-presencial">Davi Silva Barros (Presencial)</span>, 
-                        <span class="status-presencial">Gabriel Costa Lopes (Presencial)</span>, 
+                        <span class="status-home">Gabriel Costa Lopes (Home)</span>, 
                         <span class="status-home">Daniel Claros Prada (Home)</span>, 
-                        <span class="status-home">Daniel Vilaça (Home)</span>
+                        <span class="status-presencial">Daniel Vilaça (Presencial)</span>
                     </td>
                 </tr>
                 <tr>
@@ -283,23 +307,23 @@
                     <td data-label="Semana">Quarta-feira</td>
                     <td data-label="Analistas">
                         <span class="status-presencial">Gabriel Yohan (Presencial)</span>, 
-                        <span class="status-presencial">Vinicius Emanuel (Presencial)</span>, 
-                        <span class="status-home">Davi Silva Barros (Home)</span>, 
-                        <span class="status-home">Gabriel Costa Lopes (Home)</span>, 
-                        <span class="status-presencial">Daniel Claros Prada (Presencial)</span>, 
-                        <span class="status-home">Daniel Vilaça (Home)</span>
+                        <span class="status-home">Vinicius Emanuel (Home)</span>, 
+                        <span class="status-folga">Davi Silva Barros (Folga)</span>, 
+                        <span class="status-presencial">Gabriel Costa Lopes (Presencial)</span>, 
+                        <span class="status-home">Daniel Claros Prada (Home)</span>, 
+                        <span class="status-presencial">Daniel Vilaça (Presencial)</span>
                     </td>
                 </tr>
                 <tr>
                     <td data-label="Dia">12-Sep</td>
                     <td data-label="Semana">Quinta-feira</td>
                     <td data-label="Analistas">
-                        <span class="status-presencial">Gabriel Yohan (Presencial)</span>, 
-                        <span class="status-home">Vinicius Emanuel (Home)</span>, 
-                        <span class="status-presencial">Davi Silva Barros (Presencial)</span>, 
-                        <span class="status-presencial">Gabriel Costa Lopes (Presencial)</span>, 
-                        <span class="status-home">Daniel Claros Prada (Home)</span>, 
-                        <span class="status-presencial">Daniel Vilaça (Presencial)</span>
+                        <span class="status-home">Gabriel Yohan (Home)</span>, 
+                        <span class="status-presencial">Vinicius Emanuel (Presencial)</span>, 
+                        <span class="status-home">Davi Silva Barros (Home)</span>, 
+                        <span class="status-folga">Gabriel Costa Lopes (Folga)</span>, 
+                        <span class="status-presencial">Daniel Claros Prada (Presencial)</span>, 
+                        <span class="status-home">Daniel Vilaça (Home)</span>
                     </td>
                 </tr>
                 <tr>
@@ -307,32 +331,47 @@
                     <td data-label="Semana">Sexta-feira</td>
                     <td data-label="Analistas">
                         <span class="status-presencial">Gabriel Yohan (Presencial)</span>, 
-                        <span class="status-presencial">Vinicius Emanuel (Presencial)</span>, 
-                        <span class="status-home">Davi Silva Barros (Home)</span>, 
-                        <span class="status-presencial">Gabriel Costa Lopes (Presencial)</span>, 
+                        <span class="status-home">Vinicius Emanuel (Home)</span>, 
+                        <span class="status-presencial">Davi Silva Barros (Presencial)</span>, 
+                        <span class="status-home">Gabriel Costa Lopes (Home)</span>, 
                         <span class="status-home">Daniel Claros Prada (Home)</span>, 
-                        <span class="status-home">Daniel Vilaça (Home)</span>
+                        <span class="status-presencial">Daniel Vilaça (Presencial)</span>
                     </td>
                 </tr>
                 <tr>
                     <td data-label="Dia">14-Sep</td>
                     <td data-label="Semana">Sábado</td>
-                    <td data-label="Analistas" class="status-folga">Prada (Folga)</td>
+                    <td data-label="Analistas">
+                        <span class="status-presencial">Gabriel Yohan (Presencial)</span>, 
+                        <span class="status-home">Vinicius Emanuel (Home)</span>, 
+                        <span class="status-home">Davi Silva Barros (Home)</span>, 
+                        <span class="status-folga">Gabriel Costa Lopes (Folga)</span>, 
+                        <span class="status-home">Daniel Claros Prada (Home)</span>, 
+                        <span class="status-presencial">Daniel Vilaça (Presencial)</span>
+                    </td>
                 </tr>
                 <tr>
                     <td data-label="Dia">15-Sep</td>
                     <td data-label="Semana">Domingo</td>
-                    <td data-label="Analistas" class="status-recebe">Davi (Recebe R$)</td>
+                    <td data-label="Analistas">
+                        <span class="status-home">Gabriel Yohan (Home)</span>, 
+                        <span class="status-presencial">Vinicius Emanuel (Presencial)</span>, 
+                        <span class="status-home">Davi Silva Barros (Home)</span>, 
+                        <span class="status-folga">Gabriel Costa Lopes (Folga)</span>, 
+                        <span class="status-home">Daniel Claros Prada (Home)</span>, 
+                        <span class="status-presencial">Daniel Vilaça (Presencial)</span>
+                    </td>
                 </tr>
                 <tr>
                     <td data-label="Dia">16-Sep</td>
                     <td data-label="Semana">Segunda-feira</td>
                     <td data-label="Analistas">
-                        <span class="status-presencial">Gabriel Yohan (Presencial)</span>, 
+                        <span class="status-home">Gabriel Yohan (Home)</span>, 
                         <span class="status-presencial">Vinicius Emanuel (Presencial)</span>, 
-                        <span class="status-home">Davi Silva Barros (Home)</span>, 
+                        <span class="status-folga">Davi Silva Barros (Folga)</span>, 
                         <span class="status-presencial">Gabriel Costa Lopes (Presencial)</span>, 
-                        <span class="status-folga">Daniel Claros Prada (Folga)</span>
+                        <span class="status-home">Daniel Claros Prada (Home)</span>, 
+                        <span class="status-presencial">Daniel Vilaça (Presencial)</span>
                     </td>
                 </tr>
                 <tr>
@@ -343,7 +382,8 @@
                         <span class="status-home">Vinicius Emanuel (Home)</span>, 
                         <span class="status-presencial">Davi Silva Barros (Presencial)</span>, 
                         <span class="status-home">Gabriel Costa Lopes (Home)</span>, 
-                        <span class="status-presencial">Daniel Claros Prada (Presencial)</span>
+                        <span class="status-home">Daniel Claros Prada (Home)</span>, 
+                        <span class="status-presencial">Daniel Vilaça (Presencial)</span>
                     </td>
                 </tr>
                 <tr>
@@ -351,21 +391,23 @@
                     <td data-label="Semana">Quarta-feira</td>
                     <td data-label="Analistas">
                         <span class="status-presencial">Gabriel Yohan (Presencial)</span>, 
-                        <span class="status-presencial">Vinicius Emanuel (Presencial)</span>, 
-                        <span class="status-home">Davi Silva Barros (Home)</span>, 
+                        <span class="status-home">Vinicius Emanuel (Home)</span>, 
+                        <span class="status-folga">Davi Silva Barros (Folga)</span>, 
                         <span class="status-presencial">Gabriel Costa Lopes (Presencial)</span>, 
-                        <span class="status-home">Daniel Claros Prada (Home)</span>
+                        <span class="status-home">Daniel Claros Prada (Home)</span>, 
+                        <span class="status-presencial">Daniel Vilaça (Presencial)</span>
                     </td>
                 </tr>
                 <tr>
                     <td data-label="Dia">19-Sep</td>
                     <td data-label="Semana">Quinta-feira</td>
                     <td data-label="Analistas">
-                        <span class="status-presencial">Gabriel Yohan (Presencial)</span>, 
-                        <span class="status-home">Vinicius Emanuel (Home)</span>, 
-                        <span class="status-presencial">Davi Silva Barros (Presencial)</span>, 
-                        <span class="status-home">Gabriel Costa Lopes (Home)</span>, 
-                        <span class="status-presencial">Daniel Claros Prada (Presencial)</span>
+                        <span class="status-home">Gabriel Yohan (Home)</span>, 
+                        <span class="status-presencial">Vinicius Emanuel (Presencial)</span>, 
+                        <span class="status-home">Davi Silva Barros (Home)</span>, 
+                        <span class="status-folga">Gabriel Costa Lopes (Folga)</span>, 
+                        <span class="status-presencial">Daniel Claros Prada (Presencial)</span>, 
+                        <span class="status-home">Daniel Vilaça (Home)</span>
                     </td>
                 </tr>
                 <tr>
@@ -373,10 +415,11 @@
                     <td data-label="Semana">Sexta-feira</td>
                     <td data-label="Analistas">
                         <span class="status-presencial">Gabriel Yohan (Presencial)</span>, 
-                        <span class="status-presencial">Vinicius Emanuel (Presencial)</span>, 
-                        <span class="status-home">Davi Silva Barros (Home)</span>, 
-                        <span class="status-presencial">Gabriel Costa Lopes (Presencial)</span>, 
-                        <span class="status-home">Daniel Claros Prada (Home)</span>
+                        <span class="status-home">Vinicius Emanuel (Home)</span>, 
+                        <span class="status-presencial">Davi Silva Barros (Presencial)</span>, 
+                        <span class="status-home">Gabriel Costa Lopes (Home)</span>, 
+                        <span class="status-home">Daniel Claros Prada (Home)</span>, 
+                        <span class="status-presencial">Daniel Vilaça (Presencial)</span>
                     </td>
                 </tr>
             </tbody>
