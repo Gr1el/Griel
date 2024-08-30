@@ -6,277 +6,181 @@
     <title>Escala de Trabalho</title>
     <style>
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #e9ecef;
-            color: #343a40;
-            margin: 0;
-            padding: 20px;
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f0f4f8;
+            color: #333;
         }
-        h2 {
+        h1 {
             text-align: center;
-            color: #495057;
-        }
-        .container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        .section {
-            width: 100%;
-            max-width: 1200px;
-            margin: 20px 0;
-            padding: 10px;
-            background-color: #ffffff;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
-        }
-        .section h3 {
-            margin: 0;
-            padding: 10px;
-            background-color: #007bff;
-            color: white;
-            text-align: center;
-            border-radius: 8px 8px 0 0;
+            color: #444;
         }
         table {
             width: 100%;
             border-collapse: collapse;
-            margin: 10px 0;
+            margin: 0 auto;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
         }
         th, td {
             padding: 12px;
             text-align: center;
-            border: 1px solid #dee2e6;
+            border: 1px solid #ddd;
         }
         th {
-            background-color: #007bff;
+            background-color: #4CAF50;
             color: white;
-            font-weight: bold;
         }
         tr:nth-child(even) {
-            background-color: #f8f9fa;
+            background-color: #f9f9f9;
+        }
+        tr:nth-child(odd) {
+            background-color: #fff;
+        }
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+        .highlight {
+            background-color: #e2f7e2;
+            font-weight: bold;
+            color: #388e3c;
+        }
+        .home {
+            background-color: #e3f2fd;
+            color: #0277bd;
         }
         .presencial {
-            background-color: #d1ecf1;
+            background-color: #fff3e0;
+            color: #fb8c00;
         }
-        .home-office {
-            background-color: #fff3cd;
+        .folga {
+            background-color: #fce4ec;
+            color: #d81b60;
         }
-        td {
-            border-radius: 4px;
+        .plantao {
+            background-color: #e8f5e9;
+            color: #43a047;
         }
-        caption {
-            font-size: 1.2em;
-            margin: 10px 0;
-            color: #495057;
-        }
-        @media (max-width: 768px) {
-            table, thead, tbody, th, td, tr {
-                display: block;
-            }
-            th, td {
-                text-align: left;
-                padding: 10px;
-            }
-            td {
-                border: none;
-                border-bottom: 1px solid #dee2e6;
-                position: relative;
-                padding-left: 50%;
-            }
-            td::before {
-                content: attr(data-label);
-                position: absolute;
-                left: 0;
-                width: 50%;
-                padding-left: 10px;
-                font-weight: bold;
-                white-space: nowrap;
-            }
+        .off {
+            background-color: #f5f5f5;
+            color: #bdbdbd;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h2>Escala de Trabalho - 02/09/2024 a 16/09/2024</h2>
-        
-        <div class="section">
-            <h3>Trabalho Presencial</h3>
-            <table>
-                <caption>Presenciais</caption>
-                <thead>
-                    <tr>
-                        <th>Data</th>
-                        <th>Dia da Semana</th>
-                        <th>Funcionário</th>
-                        <th>Horário</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- Semana de 02/09/2024 a 06/09/2024 -->
-                    <tr class="presencial">
-                        <td data-label="Data">02/09/2024</td>
-                        <td data-label="Dia da Semana">Segunda-feira</td>
-                        <td data-label="Funcionário">Daniel Prada</td>
-                        <td data-label="Horário">11:00 - 20:00</td>
-                    </tr>
-                    <tr class="presencial">
-                        <td data-label="Data">03/09/2024</td>
-                        <td data-label="Dia da Semana">Terça-feira</td>
-                        <td data-label="Funcionário">Gabriel Costa</td>
-                        <td data-label="Horário">11:00 - 20:00</td>
-                    </tr>
-                    <tr class="presencial">
-                        <td data-label="Data">04/09/2024</td>
-                        <td data-label="Dia da Semana">Quarta-feira</td>
-                        <td data-label="Funcionário">Daniel Vilaça</td>
-                        <td data-label="Horário">11:00 - 20:00</td>
-                    </tr>
-                    <tr class="presencial">
-                        <td data-label="Data">05/09/2024</td>
-                        <td data-label="Dia da Semana">Quinta-feira</td>
-                        <td data-label="Funcionário">Daniel Prada</td>
-                        <td data-label="Horário">11:00 - 20:00</td>
-                    </tr>
-                    <tr class="presencial">
-                        <td data-label="Data">06/09/2024</td>
-                        <td data-label="Dia da Semana">Sexta-feira</td>
-                        <td data-label="Funcionário">Gabriel Costa</td>
-                        <td data-label="Horário">11:00 - 20:00</td>
-                    </tr>
-                    <!-- Semana de 09/09/2024 a 13/09/2024 -->
-                    <tr class="presencial">
-                        <td data-label="Data">09/09/2024</td>
-                        <td data-label="Dia da Semana">Segunda-feira</td>
-                        <td data-label="Funcionário">Daniel Prada</td>
-                        <td data-label="Horário">11:00 - 20:00</td>
-                    </tr>
-                    <tr class="presencial">
-                        <td data-label="Data">10/09/2024</td>
-                        <td data-label="Dia da Semana">Terça-feira</td>
-                        <td data-label="Funcionário">Gabriel Costa</td>
-                        <td data-label="Horário">11:00 - 20:00</td>
-                    </tr>
-                    <tr class="presencial">
-                        <td data-label="Data">11/09/2024</td>
-                        <td data-label="Dia da Semana">Quarta-feira</td>
-                        <td data-label="Funcionário">Daniel Prada</td>
-                        <td data-label="Horário">11:00 - 20:00</td>
-                    </tr>
-                    <tr class="presencial">
-                        <td data-label="Data">12/09/2024</td>
-                        <td data-label="Dia da Semana">Quinta-feira</td>
-                        <td data-label="Funcionário">Daniel Vilaça</td>
-                        <td data-label="Horário">11:00 - 20:00</td>
-                    </tr>
-                    <tr class="presencial">
-                        <td data-label="Data">13/09/2024</td>
-                        <td data-label="Dia da Semana">Sexta-feira</td>
-                        <td data-label="Funcionário">Gabriel Costa</td>
-                        <td data-label="Horário">11:00 - 20:00</td>
-                    </tr>
-                    <!-- Semana de 16/09/2024 -->
-                    <tr class="presencial">
-                        <td data-label="Data">16/09/2024</td>
-                        <td data-label="Dia da Semana">Segunda-feira</td>
-                        <td data-label="Funcionário">Daniel Prada</td>
-                        <td data-label="Horário">11:00 - 20:00</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        
-        <div class="section">
-            <h3>Trabalho Home Office</h3>
-            <table>
-                <caption>Home Office</caption>
-                <thead>
-                    <tr>
-                        <th>Data</th>
-                        <th>Dia da Semana</th>
-                        <th>Funcionário</th>
-                        <th>Horário</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- Semana de 02/09/2024 a 06/09/2024 -->
-                    <tr class="home-office">
-                        <td data-label="Data">02/09/2024</td>
-                        <td data-label="Dia da Semana">Segunda-feira</td>
-                        <td data-label="Funcionário">Daniel Vilaça</td>
-                        <td data-label="Horário">08:00 - 17:00</td>
-                    </tr>
-                    <tr class="home-office">
-                        <td data-label="Data">02/09/2024</td>
-                        <td data-label="Dia da Semana">Segunda-feira</td>
-                        <td data-label="Funcionário">Gabriel Costa</td>
-                        <td data-label="Horário">09:00 - 18:00</td>
-                    </tr>
-                    <tr class="home-office">
-                        <td data-label="Data">03/09/2024</td>
-                        <td data-label="Dia da Semana">Terça-feira</td>
-                        <td data-label="Funcionário">Daniel Prada</td>
-                        <td data-label="Horário">08:00 - 17:00</td>
-                    </tr>
-                    <tr class="home-office">
-                        <td data-label="Data">04/09/2024</td>
-                        <td data-label="Dia da Semana">Quarta-feira</td>
-                        <td data-label="Funcionário">Gabriel Costa</td>
-                        <td data-label="Horário">09:00 - 18:00</td>
-                    </tr>
-                    <tr class="home-office">
-                        <td data-label="Data">05/09/2024</td>
-                        <td data-label="Dia da Semana">Quinta-feira</td>
-                        <td data-label="Funcionário">Daniel Prada</td>
-                        <td data-label="Horário">09:00 - 18:00</td>
-                    </tr>
-                    <tr class="home-office">
-                        <td data-label="Data">06/09/2024</td>
-                        <td data-label="Dia da Semana">Sexta-feira</td>
-                        <td data-label="Funcionário">Daniel Vilaça</td>
-                        <td data-label="Horário">08:00 - 17:00</td>
-                    </tr>
-                    <!-- Semana de 09/09/2024 a 13/09/2024 -->
-                    <tr class="home-office">
-                        <td data-label="Data">09/09/2024</td>
-                        <td data-label="Dia da Semana">Segunda-feira</td>
-                        <td data-label="Funcionário">Gabriel Costa</td>
-                        <td data-label="Horário">09:00 - 18:00</td>
-                    </tr>
-                    <tr class="home-office">
-                        <td data-label="Data">10/09/2024</td>
-                        <td data-label="Dia da Semana">Terça-feira</td>
-                        <td data-label="Funcionário">Daniel Vilaça</td>
-                        <td data-label="Horário">08:00 - 17:00</td>
-                    </tr>
-                    <tr class="home-office">
-                        <td data-label="Data">11/09/2024</td>
-                        <td data-label="Dia da Semana">Quarta-feira</td>
-                        <td data-label="Funcionário">Gabriel Costa</td>
-                        <td data-label="Horário">09:00 - 18:00</td>
-                    </tr>
-                    <tr class="home-office">
-                        <td data-label="Data">12/09/2024</td>
-                        <td data-label="Dia da Semana">Quinta-feira</td>
-                        <td data-label="Funcionário">Daniel Prada</td>
-                        <td data-label="Horário">08:00 - 17:00</td>
-                    </tr>
-                    <tr class="home-office">
-                        <td data-label="Data">13/09/2024</td>
-                        <td data-label="Dia da Semana">Sexta-feira</td>
-                        <td data-label="Funcionário">Daniel Vilaça</td>
-                        <td data-label="Horário">08:00 - 17:00</td>
-                    </tr>
-                    <!-- Semana de 16/09/2024 -->
-                    <tr class="home-office">
-                        <td data-label="Data">16/09/2024</td>
-                        <td data-label="Dia da Semana">Segunda-feira</td>
-                        <td data-label="Funcionário">Gabriel Costa</td>
-                        <td data-label="Horário">09:00 - 18:00</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
+    <h1>Escala de Trabalho</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>DATA</th>
+                <th>Dia da semana</th>
+                <th>Daniel Prada</th>
+                <th>Vilaça</th>
+                <th>Gabriel</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>02/09/2024</td>
+                <td>Segunda-feira</td>
+                <td class="presencial">Presencial</td>
+                <td class="home">home</td>
+                <td class="folga">Folga</td>
+            </tr>
+            <tr>
+                <td>03/09/2024</td>
+                <td>Terça-feira</td>
+                <td class="home">home</td>
+                <td class="presencial">Presencial</td>
+                <td class="home">home</td>
+            </tr>
+            <tr>
+                <td>04/09/2024</td>
+                <td>Quarta-feira</td>
+                <td class="home">home</td>
+                <td class="home">home</td>
+                <td class="presencial">Presencial</td>
+            </tr>
+            <tr>
+                <td>05/09/2024</td>
+                <td>Quinta-feira</td>
+                <td class="presencial">Presencial</td>
+                <td class="home">home</td>
+                <td class="home">home</td>
+            </tr>
+            <tr>
+                <td>06/09/2024</td>
+                <td>Sexta-feira</td>
+                <td class="home">home</td>
+                <td class="presencial">Presencial</td>
+                <td class="home">home</td>
+            </tr>
+            <tr>
+                <td>07/09/2024</td>
+                <td>Sábado</td>
+                <td class="folga">Folga</td>
+                <td class="folga">Folga</td>
+                <td class="folga">Folga</td>
+            </tr>
+            <tr>
+                <td>08/09/2024</td>
+                <td>Domingo</td>
+                <td class="plantao">Plantão</td>
+                <td class="folga">Folga</td>
+                <td class="folga">Folga</td>
+            </tr>
+            <tr>
+                <td>09/09/2024</td>
+                <td>Segunda-feira</td>
+                <td class="home">home</td>
+                <td class="presencial">Presencial</td>
+                <td class="home">home</td>
+            </tr>
+            <tr>
+                <td>10/09/2024</td>
+                <td>Terça-feira</td>
+                <td class="home">home</td>
+                <td class="home">home</td>
+                <td class="presencial">Presencial</td>
+            </tr>
+            <tr>
+                <td>11/09/2024</td>
+                <td>Quarta-feira</td>
+                <td class="presencial">Presencial</td>
+                <td class="home">home</td>
+                <td class="home">home</td>
+            </tr>
+            <tr>
+                <td>12/09/2024</td>
+                <td>Quinta-feira</td>
+                <td class="home">home</td>
+                <td class="presencial">Presencial</td>
+                <td class="home">home</td>
+            </tr>
+            <tr>
+                <td>13/09/2024</td>
+                <td>Sexta-feira</td>
+                <td class="folga">Folga</td>
+                <td class="home">home</td>
+                <td class="presencial">Presencial</td>
+            </tr>
+            <tr>
+                <td>14/09/2024</td>
+                <td>Sábado</td>
+                <td class="folga">Folga</td>
+                <td class="plantao">Plantão</td>
+                <td class="folga">Folga</td>
+            </tr>
+            <tr>
+                <td>15/09/2024</td>
+                <td>Domingo</td>
+                <td class="folga">Folga</td>
+                <td class="home">home</td>
+                <td class="folga">Folga</td>
+            </tr>
+        </tbody>
+    </table>
 </body>
 </html>
