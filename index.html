@@ -9,107 +9,74 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #e0f2f1;
-            color: #333;
+            background-color: #f4f4f4;
         }
         table {
             width: 100%;
             border-collapse: collapse;
-            margin: 20px auto;
-            background-color: #ffffff;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            margin: 20px 0;
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
         th, td {
-            padding: 16px;
+            padding: 10px;
             text-align: center;
-            border-bottom: 1px solid #ddd;
-            font-size: 16px;
+            border: 1px solid #ddd;
         }
         th {
-            background-color: #00796b;
-            color: #ffffff;
-        }
-        td {
-            font-size: 14px;
+            background-color: #4CAF50;
+            color: white;
         }
         tr:nth-child(even) {
-            background-color: #f1f8e9;
-        }
-        tr:hover {
-            background-color: #c8e6c9;
-        }
-        .highlight {
-            background-color: #dcedc8;
-        }
-        .recebe-r$ {
-            background-color: #ffeb3b;
-            color: #000;
-            font-weight: bold;
-        }
-        .folga {
-            background-color: #f44336;
-            color: #ffffff;
-            font-weight: bold;
+            background-color: #f2f2f2;
         }
         .presencial {
-            background-color: #4caf50;
-            color: #ffffff;
-            font-weight: bold;
+            background-color: #dff0d8;
+            color: #3c763d;
         }
         .home {
-            background-color: #2196f3;
-            color: #ffffff;
-            font-weight: bold;
+            background-color: #d9edf7;
+            color: #31708f;
         }
-        @media (max-width: 1440px) {
-            table {
-                font-size: 14px;
-            }
-            th, td {
-                padding: 12px;
-            }
+        .folga {
+            background-color: #f2dede;
+            color: #a94442;
+        }
+        .recebe-r$ {
+            background-color: #fcf8e3;
+            color: #8a6d3b;
         }
         @media (max-width: 768px) {
-            table {
-                width: 100%;
+            table, th, td {
                 display: block;
-                overflow-x: auto;
-                -webkit-overflow-scrolling: touch;
-                border: 1px solid #ddd;
-                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                width: 100%;
+                box-sizing: border-box;
             }
-            thead {
+            th {
                 display: none;
             }
             tr {
+                border-bottom: 1px solid #ddd;
                 display: block;
                 margin-bottom: 10px;
             }
             td {
-                display: block;
+                display: flex;
+                justify-content: space-between;
+                padding: 10px 0;
+                border: none;
                 text-align: left;
-                padding: 12px;
                 position: relative;
-                border: 1px solid #ddd;
-                box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
             }
-            td::before {
+            td:before {
                 content: attr(data-label);
                 position: absolute;
                 left: 0;
-                width: 45%;
-                padding: 8px;
-                font-weight: bold;
-                background-color: #f4f4f4;
-                color: #333;
-                border-right: 1px solid #ddd;
                 top: 0;
-                white-space: nowrap;
-            }
-            td:last-child {
-                border-bottom: 0;
+                background: #eee;
+                padding: 5px;
+                font-weight: bold;
+                color: #333;
             }
         }
     </style>
@@ -142,7 +109,7 @@
             <tr>
                 <td data-label="Data">1-Sep</td>
                 <td data-label="Dia da Semana">Domingo</td>
-                <td class="folga" data-label="Funcionário 1">Vini (Folga)</td>
+                <td class="folga" data-label="Funcionário 1">Gabriel (Folga)</td>
                 <td></td>
                 <td></td>
                 <td></td>
@@ -186,8 +153,8 @@
                 <td class="presencial" data-label="Funcionário 2">Vinicius Emanuel (Presencial)</td>
                 <td class="home" data-label="Funcionário 3">Davi Silva Barros (Home)</td>
                 <td class="home" data-label="Funcionário 4">Gabriel Costa Lopes (Home)</td>
-                <td class="presencial" data-label="Funcionário 5">Daniel Claros Prada (Presencial)</td>
-                <td class="home" data-label="Funcionário 6">Daniel Vilaça (Home)</td>
+                <td class="home" data-label="Funcionário 5">Daniel Claros Prada (Home)</td>
+                <td class="presencial" data-label="Funcionário 6">Daniel Vilaça (Presencial)</td>
             </tr>
             <tr>
                 <td data-label="Data">6-Sep</td>
@@ -253,8 +220,8 @@
                 <td data-label="Data">12-Sep</td>
                 <td data-label="Dia da Semana">Quinta-feira</td>
                 <td class="presencial" data-label="Funcionário 1">Gabriel Yohan (Presencial)</td>
-                <td class="presencial" data-label="Funcionário 2">Vinicius Emanuel (Presencial)</td>
-                <td class="home" data-label="Funcionário 3">Davi Silva Barros (Home)</td>
+                <td class="home" data-label="Funcionário 2">Vinicius Emanuel (Home)</td>
+                <td class="presencial" data-label="Funcionário 3">Davi Silva Barros (Presencial)</td>
                 <td class="presencial" data-label="Funcionário 4">Gabriel Costa Lopes (Presencial)</td>
                 <td class="home" data-label="Funcionário 5">Daniel Claros Prada (Home)</td>
                 <td class="presencial" data-label="Funcionário 6">Daniel Vilaça (Presencial)</td>
@@ -325,7 +292,7 @@
                 <td class="presencial" data-label="Funcionário 1">Gabriel Yohan (Presencial)</td>
                 <td class="home" data-label="Funcionário 2">Vinicius Emanuel (Home)</td>
                 <td class="presencial" data-label="Funcionário 3">Davi Silva Barros (Presencial)</td>
-                <td class="home" data-label="Funcionário 4">Gabriel Costa Lopes (Home)</td>
+                <td class="presencial" data-label="Funcionário 4">Gabriel Costa Lopes (Presencial)</td>
                 <td class="presencial" data-label="Funcionário 5">Daniel Claros Prada (Presencial)</td>
                 <td></td>
             </tr>
@@ -337,6 +304,26 @@
                 <td class="home" data-label="Funcionário 3">Davi Silva Barros (Home)</td>
                 <td class="presencial" data-label="Funcionário 4">Gabriel Costa Lopes (Presencial)</td>
                 <td class="home" data-label="Funcionário 5">Daniel Claros Prada (Home)</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td data-label="Data">21-Sep</td>
+                <td data-label="Dia da Semana">Sábado</td>
+                <td class="presencial" data-label="Funcionário 1">Vini</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td data-label="Data">22-Sep</td>
+                <td data-label="Dia da Semana">Domingo</td>
+                <td class="folga" data-label="Funcionário 1">Davi Silva (Folga)</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
                 <td></td>
             </tr>
         </tbody>
