@@ -49,10 +49,18 @@
       display: block;
     }
 
-    select {
+    input, select {
       font-size: 16px;
       padding: 5px;
       margin-left: 5px;
+    }
+
+    #mensagem {
+      margin-top: 20px;
+      padding: 10px;
+      background-color: #f4f4f4;
+      border: 1px solid #ccc;
+      white-space: pre-wrap;
     }
   </style>
 </head>
@@ -61,24 +69,29 @@
     <button onclick="showSection('acesso')">Acesso</button>
     <button onclick="showSection('contato')">Contato</button>
     <button onclick="showSection('grupo')">Grupo de E-mail</button>
-    <button onclick="showSection('tentativa')">Tentativa de Contato</button>
   </div>
 
   <div class="content">
     <div id="acesso" class="section active">
       <h1>Acesso</h1>
-      <p>
-        Bom dia Beatriz Couto De Oliveira! Sou o 
-        <select id="nomeUsuario" onchange="atualizarNome()">
-          <option>Gabriel</option>
-          <option>Daniel</option>
-          <option>Davi</option>
-          <option>Gustavo</option>
-        </select>
-        do Helpdesk.<br>
-        Motivo do contato referente ao chamado: <strong>#0525-002766</strong>.<br>
+      <label>Nome do usuário:</label>
+      <input type="text" id="usuario" value="Beatriz Couto De Oliveira" oninput="atualizarMensagem()" />
+
+      <br><br>
+
+      <label>Seu nome:</label>
+      <select id="nomeAtendente" onchange="atualizarMensagem()">
+        <option>Gabriel</option>
+        <option>Daniel</option>
+        <option>Davi</option>
+        <option>Gustavo</option>
+      </select>
+
+      <div id="mensagem">
+        Bom dia Beatriz Couto De Oliveira! Sou o Gabriel do Helpdesk.<br>
+        Motivo do contato referente ao chamado:<br>
         Possui disponibilidade para realizar atendimento do chamado agora?
-      </p>
+      </div>
     </div>
 
     <div id="contato" class="section">
@@ -90,11 +103,6 @@
       <h1>Grupo de E-mail</h1>
       <p>Informações sobre os grupos de e-mail.</p>
     </div>
-
-    <div id="tentativa" class="section">
-      <h1>Tentativa de Contato</h1>
-      <p>Histórico de tentativas de contato com clientes ou parceiros.</p>
-    </div>
   </div>
 
   <script>
@@ -105,11 +113,20 @@
       document.getElementById(id).classList.add('active');
     }
 
-    function atualizarNome() {
-      const select = document.getElementById('nomeUsuario');
-      const nome = select.value;
-      select.previousSibling.textContent = "Sou o ";
+    function atualizarMensagem() {
+      const usuario = document.getElementById('usuario').value;
+      const atendente = document.getElementById('nomeAtendente').value;
+
+      const mensagem = 
+`Bom dia ${usuario}! Sou o ${atendente} do Helpdesk.
+Motivo do contato referente ao chamado: 
+Possui disponibilidade para realizar atendimento do chamado agora?`;
+
+      document.getElementById('mensagem').textContent = mensagem;
     }
+
+    // Atualiza a mensagem inicial com os valores padrão
+    atualizarMensagem();
   </script>
 </body>
 </html>
