@@ -2,29 +2,23 @@
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Empresa - Navegação</title>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
     body {
+      margin: 0;
+      font-family: Arial, sans-serif;
       display: flex;
       height: 100vh;
-      font-family: Arial, sans-serif;
     }
 
-    /* Sidebar */
     .sidebar {
       width: 200px;
       background-color: #2c3e50;
       color: white;
+      padding-top: 20px;
       display: flex;
       flex-direction: column;
-      padding-top: 20px;
     }
 
     .sidebar button {
@@ -42,7 +36,6 @@
       background-color: #34495e;
     }
 
-    /* Main content */
     .content {
       flex: 1;
       padding: 40px;
@@ -55,17 +48,40 @@
     .section.active {
       display: block;
     }
+
+    select {
+      font-size: 16px;
+      padding: 5px;
+      margin-left: 5px;
+    }
   </style>
 </head>
 <body>
   <div class="sidebar">
+    <button onclick="showSection('acesso')">Acesso</button>
     <button onclick="showSection('contato')">Contato</button>
     <button onclick="showSection('grupo')">Grupo de E-mail</button>
     <button onclick="showSection('tentativa')">Tentativa de Contato</button>
   </div>
 
   <div class="content">
-    <div id="contato" class="section active">
+    <div id="acesso" class="section active">
+      <h1>Acesso</h1>
+      <p>
+        Bom dia Beatriz Couto De Oliveira! Sou o 
+        <select id="nomeUsuario" onchange="atualizarNome()">
+          <option>Gabriel</option>
+          <option>Daniel</option>
+          <option>Davi</option>
+          <option>Gustavo</option>
+        </select>
+        do Helpdesk.<br>
+        Motivo do contato referente ao chamado: <strong>#0525-002766</strong>.<br>
+        Possui disponibilidade para realizar atendimento do chamado agora?
+      </p>
+    </div>
+
+    <div id="contato" class="section">
       <h1>Contato</h1>
       <p>Informações de contato da empresa.</p>
     </div>
@@ -87,6 +103,12 @@
         sec.classList.remove('active');
       });
       document.getElementById(id).classList.add('active');
+    }
+
+    function atualizarNome() {
+      const select = document.getElementById('nomeUsuario');
+      const nome = select.value;
+      select.previousSibling.textContent = "Sou o ";
     }
   </script>
 </body>
