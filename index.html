@@ -233,7 +233,18 @@
 
     <div id="grupo" class="section">
       <h1>Grupo de E-mail</h1>
-      <p>Informações sobre os grupos de e-mail.</p>
+
+      <label for="empresaSelect">Selecione a função:</label>
+      <select id="empresaSelect" onchange="atualizarGrupoEmail()">
+        <option value="nitro">Nitro</option>
+        <option value="oji">OJI</option>
+      </select>
+
+      <div id="mensagemGrupo" style="margin-top: 20px; white-space: pre-line;"></div>
+
+      <button id="btnCopyGrupo" onclick="copiarMensagemGrupo()" style="margin-top: 15px; padding: 10px 20px; background-color: #3b82f6; color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 16px;">
+        Copiar mensagem do grupo
+      </button>
     </div>
   </div>
 
@@ -268,7 +279,35 @@
       });
     }
 
+    function atualizarGrupoEmail() {
+      const select = document.getElementById('empresaSelect');
+      const valor = select.value;
+
+      let mensagem = `Oi, realizada alteração de acesso à pasta de rede. Acesso à pasta foi liberado.
+Favor reiniciar a máquina para aplicar alteração na conta.
+Em caso de erro ou dúvida, favor entrar em contato com Helpdesk:\n`;
+
+      if (valor === 'nitro') {
+        mensagem += `Nitro: (11) 2134-9011 ou (11) 2147-6459`;
+      } else if (valor === 'oji') {
+        mensagem += `OJI: (11) 2134-9024 ou (11) 2147-6462`;
+      }
+
+      document.getElementById('mensagemGrupo').textContent = mensagem;
+    }
+
+    function copiarMensagemGrupo() {
+      const texto = document.getElementById('mensagemGrupo').textContent;
+      navigator.clipboard.writeText(texto).then(() => {
+        alert('Mensagem do grupo copiada!');
+      }).catch(() => {
+        alert('Falha ao copiar a mensagem do grupo.');
+      });
+    }
+
+    // Inicializa as mensagens
     atualizarMensagem();
+    atualizarGrupoEmail();
   </script>
 </body>
 </html>
